@@ -1,0 +1,83 @@
+﻿@model OrdersViewModel
+
+@{
+	ViewBag.Title = "Orders";
+}
+<div class="mt-72">
+
+	<ul class="flex text-3xl font-bold">
+		<li class="mr-6">
+			<a asp-controller="StocksApp" asp-action="GetStockDetails" class="text-gray-800 hover:text-blue-800 dark:text-white">Trade</a>
+		</li>
+		<li class="mr-6">
+			<a asp-controller="StocksApp" asp-action="GetOrders" class="underline-offset-4 text-gray-800 underline hover:text-blue-800 dark:text-white">Orders</a>
+		</li>
+		<li class="mr-6">
+			<a asp-controller="StocksApp" asp-action="GetExplorePage"  class="text-gray-800 hover:text-blue-800 dark:text-white">Explore</a>
+		</li>
+	</ul>
+
+	<a asp-controller="StocksApp" asp-action="DownloadPdf" class="mt-10 inline-flex items-center rounded border border-gray-800 bg-gray-100 px-4 py-2 font-bold text-gray-800 hover:bg-gray-800 hover:text-white dark:text-white dark:bg-gray-800 dark:hover:text-gray-800 dark:hover:bg-gray-100">
+		<svg class="mr-2 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" /></svg>
+		<span>Download PDF</span>
+	</a>
+	<div class="my-5 text-2xl text-gray-600 dark:text-white">Stocks <span class="text-3xl">▸ </span>Orders</div>
+
+	@if (Model.SellOrders is null && Model.BuyOrders is null )
+	{
+		<div class="text-[3rem] block max-w-fit rounded-lg p-6 text-gray-800 dark:text-white">
+			No Orders Yet
+		</div>
+	}
+	else
+	{
+		<div class="orders pb-[10rem] flex">
+			<div>
+				@if (Model.BuyOrders is not null)
+				{
+					<div class="w-[30rem] block rounded-lg border border-gray-500 bg-white p-6 shadow dark:bg-gray-800 dark:border-gray-700">
+						<p class="font-bold text-gray-500">Buy Orders</p>
+
+						@foreach (BuyOrderResponse? buyOrderResponse in Model.BuyOrders)
+						{
+							@await Html.PartialAsync("_BuyOrderBox", buyOrderResponse)
+
+						}
+					</div>
+				}
+				else
+				{
+					<div class="text-[3rem] block max-w-fit rounded-lg p-6 text-gray-800 dark:text-white">
+						No Buy Orders
+					</div>
+				}
+			</div>
+
+			<div class="ml-10">
+				@if (Model.SellOrders is not null)
+				{
+					<div class="w-[30rem] block rounded-lg border border-gray-500 bg-white p-6 shadow dark:bg-gray-800 dark:border-gray-700">
+						<p class="font-bold text-gray-500">Sell Orders</p>
+						@foreach (SellOrderResponse? sellOrderResponse in Model.SellOrders)
+						{
+							@await Html.PartialAsync("_SellOrderBox", sellOrderResponse)
+						}
+					</div>
+				}
+				else
+				{
+					<div class="text-[3rem] block max-w-fit rounded-lg p-6 text-gray-800 dark:text-white">
+						No Sell Orders
+					</div>
+				}
+			</div>
+		</div>
+	}
+</div>
+
+@section Scripts {
+	<script src="/Scripts/GetStockDetailsScript.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" asp-fallback-test="window.jQuery" asp-fallback-src="/Scripts/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.4/jquery.validate.min.js" asp-fallback-test="window.jQuery.validator" asp-fallback-src="/Scripts/jquery.validate.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js" asp-fallback-test="window.jQuery.validator.unobstrusive" asp-fallback-src="/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}
