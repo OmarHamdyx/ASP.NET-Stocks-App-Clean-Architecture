@@ -1,4 +1,5 @@
 using Rotativa.AspNetCore;
+using Serilog;
 using StocksApp.ExtentionMethods;
 using StocksApp.Middlewares;
 

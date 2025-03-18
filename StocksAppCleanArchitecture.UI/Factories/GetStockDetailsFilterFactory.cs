@@ -1,10 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc.Filters;
-using StocksApp.Filters;
-using System.Web.Mvc;
 
 namespace StocksApp.Factories
 {
-	public class GetStockDetailsFilterFactory : Attribute, IFilterFactory
+    public class GetStockDetailsFilterFactory : Attribute, IFilterFactory
 	{
 		private readonly int _order;
 		private GetStockDetailsFilter? _getStockDetailsFilter;
