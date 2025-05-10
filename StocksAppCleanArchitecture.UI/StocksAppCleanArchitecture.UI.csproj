@@ -20,8 +20,8 @@
     <ProjectReference Include="..\StocksAppCleanArchitecture.Infrastructure\StocksAppCleanArchitecture.Infrastructure.csproj" />
     <ProjectReference Include="..\StocksAppCore\StocksAppCore.csproj" />
   </ItemGroup>
-	<ItemGroup>
-		<InternalsVisibleTo include = "StocksAppCleanArchitecture.IntegrationTests"/>
-	</ItemGroup>
+  <ItemGroup>
+	  <InternalsVisibleTo include = "StocksAppCleanArchitecture.IntegrationTests"/>
+  </ItemGroup>
 	
 </Project>
