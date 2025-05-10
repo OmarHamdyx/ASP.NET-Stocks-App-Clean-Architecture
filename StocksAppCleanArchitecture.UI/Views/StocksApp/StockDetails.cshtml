@@ -6,9 +6,9 @@
 <div class="mt-72 min-h-screen">
     <div class="flex">
         <div>
-            <ul class=" flex text-3xl font-bold">
+            <ul class="flex text-3xl font-bold">
                 <li class="mr-6">
-                    <a asp-controller="StocksApp" asp-action="GetStockDetails" class="underline-offset-4 text-gray-800 underline hover:text-blue-800 dark:text-white">Trade</a>
+                    <a asp-controller="StocksApp" asp-action="GetStockDetails" class="text-gray-800 underline underline-offset-4 hover:text-blue-800 dark:text-white">Trade</a>
                 </li>
                 <li class="mr-6">
                     <a asp-controller="StocksApp" asp-action="GetOrders" class="text-gray-800 hover:text-blue-800 dark:text-white">Orders</a>
@@ -29,7 +29,7 @@
                             <p class="text-7xl font-normal text-gray-700 dark:text-gray-400">$<span class="price">@Model.Price.Value.ToString("N")</span></p>
                         }
                     </div>
-                    <div class="border-l-2 ml-5 h-auto border-white"></div>
+                    <div class="ml-5 h-auto border-l-2 border-white"></div>
                     <div class="ml-5">
                         <p class="text-2xl font-bold text-gray-500">New Order</p>
                         <form asp-controller="StocksApp" asp-action="PostOrder" method="post" class="mx-auto max-w-sm">
@@ -48,7 +48,7 @@
                 </div>
             </div>
         </div>
-        <div class="w-[50rem] ml-52 mt-40 text-2xl text-white">
+        <div class="mt-30 ml-52 w-[50rem] text-2xl text-white">
             "Stock trading, an age-old practice of buying and selling shares of publicly traded companies, is a dynamic and vital aspect of the financial markets. It all
         </div>
     </div>
